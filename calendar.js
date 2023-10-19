@@ -30,7 +30,7 @@
 
 const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const calendarAera = document.querySelector('#calendar');
+const calendarAera = document.querySelector('#calendar'); //you can use document.getElement as well, or anything that you typically use to select elements.
 const dateDisplayElement = 'h1';
 const dateDisplayFormat = 'm/y';
 const prevMonthBthText = "Previous";
