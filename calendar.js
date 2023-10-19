@@ -62,6 +62,19 @@ export class Calendar {
         var targetMonth = new Date(year + "-" + month + "-1");
         var targetMonthStartDay = targetMonth.getDay();
         const daysInTargetMonth = new Date(year, month, 0).getDate();
+
+
+        //Calculate how many rows will the matrix need
+        var matrixLength = 0;
+        if((targetMonthStartDay <= 5 && daysInTargetMonth < 31 && daysInTargetMonth > 28) || 
+            (targetMonthStartDay <= 4 && daysInTargetMonth > 30) || 
+            (targetMonthStartDay < 7 && targetMonthStartDay > 0 && daysInTargetMonth == 28)) {
+            matrixLength = 5;
+        } else if ((targetMonthStartDay === 0 && daysInTargetMonth === 28)) {
+            matrixLength = 4;
+        } else {
+            matrixLength = 6;
+        }
         
 
         //Create a matrix to display the days
@@ -70,7 +83,7 @@ export class Calendar {
         var dayCount = 0;
         var indexCount = 0;
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < matrixLength; i++) {
             matrix[i] = [];
             for (let j = 0; j < days.length; j++) {
                 if(indexCount < targetMonthStartDay) { 
@@ -103,7 +116,7 @@ export class Calendar {
         //Get the days for the calendar in a 2d matrix and putting them in the table
         const daysMatrix = this.Matrixify();
 
-        for(let i = 0; i < 6; i++) {
+        for(let i = 0; i < daysMatrix.length; i++) {
             table += '<tr>';
             for (let j = 0; j < days.length; j++) {
                 table += '<td>';
